@@ -615,23 +615,24 @@ bool SemanticsVisitor::_readAggregateValueFromInitializerList(
             {
                 if (auto typeCastElementCount = as<TypeCastIntVal>(toElementCount))
                 {
-                    if (auto genericElementCount = as<GenericParamIntVal>(typeCastElementCount->getBase()))
+                    if (auto genericElementCount =
+                            as<GenericParamIntVal>(typeCastElementCount->getBase()))
                     {
                         elementCount = 0;
                     }
                 }
                 else
                 {
-		    // We don't know the element count statically,
-		    // so what are we supposed to be doing?
-		    //
-		    if (outToExpr)
-		    {
-		        getSink()->diagnose(
-		            fromInitializerListExpr,
-			    Diagnostics::cannotUseInitializerListForArrayOfUnknownSize,
-			    toElementCount);
-		    }
+                    // We don't know the element count statically,
+                    // so what are we supposed to be doing?
+                    //
+                    if (outToExpr)
+                    {
+                        getSink()->diagnose(
+                            fromInitializerListExpr,
+                            Diagnostics::cannotUseInitializerListForArrayOfUnknownSize,
+                            toElementCount);
+                    }
                     return false;
                 }
             }
