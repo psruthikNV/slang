@@ -2408,6 +2408,7 @@ public:
     //
     const static UInt k_minSupportedModuleVersion = 0;
     const static UInt k_maxSupportedModuleVersion = 0;
+
 private:
     friend struct IRSerialReadContext;
     friend struct IRSerialWriteContext;
