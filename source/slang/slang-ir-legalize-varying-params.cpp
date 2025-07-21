@@ -3603,10 +3603,12 @@ protected:
         }
 
         const auto topologyEnum = outputDeco->getTopologyType();
-        IRIntLit* topologyConst = as<IRIntLit>(builder.getIntValue(builder.getIntType(), topologyEnum));
+        IRIntLit* topologyConst =
+            as<IRIntLit>(builder.getIntValue(builder.getIntType(), topologyEnum));
         if (topologyConst == nullptr)
         {
-            SLANG_UNEXPECTED("Failed to convert IRInst to IRIntLit for the topology count of Metal mesh");
+            SLANG_UNEXPECTED(
+                "Failed to convert IRInst to IRIntLit for the topology count of Metal mesh");
             return;
         }
 
